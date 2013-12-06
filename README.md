@@ -35,7 +35,7 @@ From there, the sky is your pie. Use the selector to match elements with whateve
 
 ## Example
 
-_[View the demo here.](http://nathanford.github.io/stylefill/demo.html)_
+_[View the demo here](http://nathanford.github.io/stylefill/demo.html)_
 
 In __demo.html__ you will see an example of how this works. For my example, I have created new property to handle ragged edges in typography. I have named the property `rag-adjust`, and initialize it with Stylefill at the bottom of the HTML.
 
