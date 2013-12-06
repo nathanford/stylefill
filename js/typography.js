@@ -1,6 +1,6 @@
 var typo = {
 
-	ragadjust : function (rules) {
+	ragadjust: function (rules) {
 	
 		for (i in rules) {
 		
