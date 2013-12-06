@@ -43,23 +43,28 @@ var stylefill = {
 	
 	getStyleSheets : function () {
 	
-		var sheetstext = new Array(),
-				sheets = Array.prototype.slice.call(document.getElementsByTagName('link')); // grab stylesheet links - not used yet
-				
-				sheets.push(Array.prototype.slice.call(document.getElementsByTagName('style'))[0]); // add on page CSS
-				
-		var scount = this.objSize(sheets);
-		
-		while (scount-- > 0) {
-			
-			var sheet = sheets[scount];
-			
-			if (sheet.innerHTML) sheetstext.push(sheet.innerHTML);
-			// else loadfile(sheet.href)
+		if (Array.prototype.slice) {
+	
+			var sheetstext = new Array(),
+					sheets = Array.prototype.slice.call(document.getElementsByTagName('link')); // grab stylesheet links - not used yet
 					
-		}
+					sheets.push(Array.prototype.slice.call(document.getElementsByTagName('style'))[0]); // add on page CSS
+					
+			var scount = this.objSize(sheets);
+			
+			while (scount-- > 0) {
+				
+				var sheet = sheets[scount];
+				
+				if (sheet.innerHTML) sheetstext.push(sheet.innerHTML);
+				// else loadfile(sheet.href)
+						
+			}
+			
+			return sheetstext;
 		
-		return sheetstext;
+		}
+		else return false;
 	
 	},
 	
