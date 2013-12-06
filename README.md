@@ -31,6 +31,15 @@ In your own javascript, you then create a function that will handle this propert
 * __Property__ - The invented property name you set.
 * __Value__ - The value given for your property.
 
+This allows you, or anyone working on this CSS, to now write your new CSS properties as if they were real.
+
+```CSS
+header h1 {
+	new-property-name: value; /* A brand new property! */
+	font-size: 3em;
+}
+```
+
 From there, the sky is your pie. Use the selector to match elements with whatever method you like – use jQuery if you must. Then run through your matched elements and alter them how you like, based on the values you define for your new rules.
 
 ## Example
@@ -81,6 +90,17 @@ if (rule.value == 'small-words' || rule.value == 'all')
   });
 			
 ```
+
+Now, in my CSS, I can write:
+
+```CSS
+p, li, h3, dd {
+	max-width: 32em;
+	rag-adjust: all; /* My new property */
+}
+```
+
+…and it will be handled just as I have defined.
 
 ## Issues 
 
