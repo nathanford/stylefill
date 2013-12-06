@@ -9,7 +9,7 @@ This script acts as a bridge between your CSS and your JavaScript, allowing your
 
 ## Setup
 
-Add stylefill.js to your HTML page, wherever you like. Then, you merely need to initialize stylefill, passing it the new property name and the function you want to run on that property. It’s best to add this at the end of your page, just before the closing BODY tag.
+Add stylefill.js to your HTML page, wherever you like. Then, you merely need to initialize stylefill, passing it the new property name and the function you want to run on that property. It’s best to add this at the end of your page, just before the closing `body` tag.
 
 ```HTML
 	<script type="text/javascript">
@@ -27,15 +27,15 @@ Add stylefill.js to your HTML page, wherever you like. Then, you merely need to 
 ```
 
 In your own javascript, you then create a function that will handle this property. Stylefill.js will parse your CSS and return an array of rule object consisting of three variables to your function:
-* _Selector_ - The selector used for the CSS rule.
-* _Property_ - The invented property name you set.
-* _Value_ - The value given for your property.
+* __Selector__ - The selector used for the CSS rule.
+* __Property__ - The invented property name you set.
+* __Value__ - The value given for your property.
 
 From there, the sky is your pie. Use the selector to match elements with whatever method you like – use jQuery if you must. Then run through your matched elements and alter them how you like, based on the values you define for your new rules.
 
 ## Example
 
-In _demo.html_ you will see an example of how this works. For my example, I have created new property to handle ragged edges in typography. I have named the property ‘rag-adjust’, and initialize it with Stylefill at the bottom of the HTML.
+In __demo.html__ you will see an example of how this works. For my example, I have created new property to handle ragged edges in typography. I have named the property `rag-adjust`, and initialize it with Stylefill at the bottom of the HTML.
 
 ```HTML
 
@@ -58,7 +58,7 @@ In _demo.html_ you will see an example of how this works. For my example, I have
 </html>
 ```
 
-I have placed my function in the file typography.js, in which I can build my library of new CSS + JS functions. In the typo.ragadjust function, I use the first few lines to loop through the rules from my CSS find the elements that match the selector I defined there:
+I have placed my function in the file typography.js, in which I can build my library of new CSS + JS functions. In the `typo.ragadjust` function, I use the first few lines to loop through the rules from my CSS find the elements that match the selector I defined there:
 
 ```HTML
 for (i in rules) {
@@ -68,7 +68,7 @@ for (i in rules) {
 			
 ```
 
-Here, rule.selector come straight from my CSS, as I wrote it there. Later, I use the values from my CSS (rule.value) to decide how to manipulate the elements:
+Here, `rule.selector` comes straight from my CSS, as I wrote it there. Later, I use the values from my CSS (`rule.value`) to decide how to manipulate the elements:
 
 ```HTML
 if (rule.value == 'small-words' || rule.value == 'all') 
@@ -82,5 +82,5 @@ if (rule.value == 'small-words' || rule.value == 'all')
 
 ## Issues 
 
-_Version 1.0_
-So far, I have only been able to read CSS written in a Style tag on the page. I am working on retrieving styles from external and inline CSS.
+__Version 1.0__
+So far, I have only been able to read CSS written in a `style` tag on the page. I am working on retrieving styles from external and inline CSS.
