@@ -27,15 +27,15 @@ Add stylefill.js to your HTML page, wherever you like. Then, you merely need to 
 ```
 
 In your own javascript, you then create a function that will handle this property. Stylefill.js will parse your CSS and return an array of rule object consisting of three variables to your function:
-* *Selector* - The selector used for the CSS rule.
-* *Property* - The invented property name you set.
-* *Value* - The value given for your property.
+* _Selector_ - The selector used for the CSS rule.
+* _Property_ - The invented property name you set.
+* _Value_ - The value given for your property.
 
 From there, the sky is your pie. Use the selector to match elements with whatever method you like – use jQuery if you must. Then run through your matched elements and alter them how you like, based on the values you define for your new rules.
 
 ## Example
 
-In *demo.html* you will see an example of how this works. For my example, I have created new property to handle ragged edges in typography. I have named the property ‘rag-adjust’, and initialize it with Stylefill at the bottom of the HTML.
+In _demo.html_ you will see an example of how this works. For my example, I have created new property to handle ragged edges in typography. I have named the property ‘rag-adjust’, and initialize it with Stylefill at the bottom of the HTML.
 
 ```HTML
 
@@ -82,5 +82,5 @@ if (rule.value == 'small-words' || rule.value == 'all')
 
 ## Issues 
 
-*Version 1.0*
+_Version 1.0_
 So far, I have only been able to read CSS written in a Style tag on the page. I am working on retrieving styles from external and inline CSS.
