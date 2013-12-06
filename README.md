@@ -85,4 +85,5 @@ if (rule.value == 'small-words' || rule.value == 'all')
 ## Issues 
 
 __Version 1.0__
-So far, I have only been able to read CSS written in a `style` tag on the page. I am working on retrieving styles from external and inline CSS.
+* So far, I have only been able to read CSS written in a `style` tag on the page. I am working on retrieving styles from external and inline CSS.
+* This will not yet work in IE8, but a fix will be coming soon for this.
