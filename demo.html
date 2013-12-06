@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<meta charset=utf-8 />
+<meta name="author" content="Mark Boulton Design" />
+<meta name="description" content="Write a description here." />
+<!-- CONTROL SCALE FOR MOBILE DEVICES IF NEEDED -->
+<!-- <meta name="viewport" content="width=device-width, minimum-scale=1.0" /> -->
+
+<title>Stylefill test</title>
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+	body {
+		padding: 5% 10% 10%;
+		font-family: 'Droid Sans', 'Lucida Sans', sans-serif;
+		font-size: 18px;
+		line-height: 1.6;
+	}
+
+	h1 {
+		font-size: 3em;
+		font-size: 4vw;
+		margin: 0;
+		line-height: 1.2;
+	}
+	
+	h2 {
+		font-size: 1.5em;
+		margin: 1em 0 1em;
+		max-width: 20em;
+	}
+	
+	h3 {
+		font-size: 1em;
+		margin: 1em 0 0;
+	}
+	
+	h4 {
+		margin: 1em 0 2em;
+		font-weight: 400;
+		font-style: italic;
+	}
+	
+	p, li, h3, dd {
+		max-width: 32em;
+		rag-adjust: all;
+	}
+	
+	p {
+		margin: 0;
+	}
+	
+	p + p {
+		text-indent: 1em;
+	}
+	
+	li {
+		margin-bottom: 1ex;
+	}
+	
+	blockquote {
+		margin: 1em;
+		font-style: italic;
+	}
+	
+	@media only screen and (max-width: 840px) {
+	
+	h1 {
+		font-size: 2em !important;
+	}
+	
+	}
+	
+	@media only screen and (min-width: 1500px) {
+	
+	h1 {
+		font-size: 3em !important;
+	}
+	
+	}
+
+</style>
+
+</head>
+<body id="index">
+	
+	<article>
+	
+		<h1>Standards not prescriptions</h1>
+		<h4>by Nathan Ford</h4>
+		
+		<p>I honestly couldn&rsquo;t tell you if <code><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/embedded-content-1.html#attr-img-srcset" title="The spec according to WHATWG">srcset</a></code> is better than <code><a href="http://html5doctor.com/html5-adaptive-images-end-of-round-one/" title="A bit more on the picture proposed picture element">picture</a></code>. How could I? It hasn&rsquo;t even been implemented by browsers, let alone tested in the wild. Yet across the web, torches have been set aflame and pitchforks brandished in support of <code>srcset</code>, or <code>picture</code>, or whatever else.</p>
+		
+		<p>Let me make this clear: <em>Standardization is a good thing</em>. It has made the life of front-end developers/designers much less stressful. But we are in danger of going too far. <em>We are beginning to prescribe the web, not standardize,</em> and that path will only lead to more frustration, and ultimately stagnation.</p>
+		
+		<h2>First, Some Definitions</h2>
+		
+		<p>You can pay a visit to <a href="http://www.merriam-webster.com/" title="Real definitions">Merriam &amp; Webster</a> on your own time; I will not bother with their definitions here. Instead, I want to set out what I mean by a “Standard” and a “Prescription” for the duration of this post:</p>
+		
+		<dl>
+			<dt>Standard</dt>
+			<dd>A normalized element, distilled from many solutions into a tried and tested ideal, in response to a well understood and familiar problem.</dd>
+			<dt>Prescription</dt>
+			<dd>A predetermined solution to a batch of symptoms. A prescription may not work the first time, therefore many must be tried until an equilibrium is found.</dd>
+		</dl>
+		
+		<h2>The Story Thus Far: Sense from Anarchy</h2>
+		
+		<p>When the web was young, browsers heavily influenced the fate of HTML, CSS, and Javascript by doing what(wg) was best for their products. They did mostly follow W3C guidelines (post 1995), but they also adopted many of their own solutions. The measly few web workers brave enough to be such a thing at that time would toil through the night to wedge their sites between compatibility with as many vendor methods as possible. It was hellish &ndash; it <em>still</em> is &ndash; but when the standardization movement swept through the land, they had a mountain of practical, tested solutions through which to sift. Standardistas carved, combined, and blasted with dynamite until only the best, most useful implementations where left (mostly), making hell just a bit smaller in the process.</p>
+		
+		<p>Standardization was necessary, but also wildly successful precisely because of the anarchy of the early web. All of that energy, competition and confusion born from chaos generated hundreds of solutions for the myriad quirks found in that awkward new medium. Personally, though, I would still prefer some of those vendor-specific solutions to what is in the current specs. In Javascript, IE&rsquo;s <code>attachEvent</code> and <code>currentStyle</code> make much more sense than what has been defined in the specification (<code>addEventListener</code> and <code>getPropertyValue()</code>, respectively). In CSS, <code>zoom</code> is much more elegant to implement than <code>transform: scale()</code>; and coming from a print design background, I easily mapped <code>b</code> and <code>i</code> to bold and italic, though I stopped using them in favor of <code>strong</code> and <code>em</code> because at one time <code>b</code> and <code>i</code> were set to be deprecated (though not anymore), and are still treated as <a href="http://www.w3.org/International/questions/qa-b-and-i-tags" title="When to use B and I, according to the HTML5 spec">bastard step-children</a>.</p>
+		
+		<h2>The Prescribed Web: Another Shade of Hell</h2>
+		
+		<p>Specifications reach too far when they become prescriptions. We have all seen this in our processes when prototyping sites or applications: prescriptions are often obliterated in testing. We know that thinking-then-doing is not a complete cycle. The addition of testing brings more informed and more practical results from a wider array contributors.</p>
+		
+		<p>I applaud the efforts of the web&rsquo;s standardizing bodies (<a href="http://www.w3.org/" title="The W3C site">W3C</a> and <a href="http://www.whatwg.org/" title="The WHATWG site">WHATWG</a>) thus far, but I fear they have begun prescribing solutions, rather than waiting long enough for a clear answer to climb its way up from the community. This is backwards. <code>srcset</code> is one example, but a <code>picture</code> element would be prescriptive at this point, too. Most of the pro/con breakdowns I have seen have been argued by front-end developers, when such decisions will likely have an impact on design and most certainly on back-end products like CMSs. We cannot know which is best for all of these interests until we all use them, so how can one be added into a spec over another at this time?</p>
+		
+		<p>Another timely example is the addition of new units of measure, specifically <code>vw</code> and <code>vh</code>. These <a href="http://www.w3.org/TR/css3-values/#viewport-relative-lengths" title="W3C Working Draft on viewport-percentage lengths">&ldquo;viewport-percentage&rdquo; lengths</a> seem to try to solve responsive issues with measurement by giving the measure a relationship to the viewport width or height, but the language of the specification is so loose it leaves the actual browser implementation wide open. Will they be relative to the actual viewport, or a container? What is the use case for widths relative to a container that we can&rsquo;t already solve with percentages? I don&rsquo;t really know. Let&rsquo;s give them, and maybe a few other ideas, a try on some real sites before we chisel them into the spec.</p>
+		
+		<p>A prescribed web will result in specifications that break down in actual implementation, leading to more confusion and more hacks, which is what standardization was meant to solve in the first place. Prescription will not make the life of web workers simpler or easier.</p>
+		
+		<h2>The Only Prescription: More Anarchy, More Solutions</h2>
+		
+		<p>I know that on some level, all of the web has been &ldquo;prescribed&rdquo;, but the second part of my definition of a <em>standard</em> is key: to create a standard we must first have a well defined problem, not symptoms. When we try to create standards for symptoms, we are prescribing. Most of the major advancements in the spec thus far have been responses to well understood problems. I do not mean that the people creating them were super-smart (though they probably were), and could therefore fathom the depths of what was needed. I mean that these problems had been around for a while, and therefore the facets of each issue were understood deeply by most involved.</p>
+		
+		<p>These latest specifications feel reactionary. Before we jump into syntax, lets make sure we are asking the right questions. <code>srcset</code> and <code>picture</code> are both trying to create a correlation between browser width and image size, but what about bandwidth? Does it matter that a small image is served to a mobile device with a broadband WiFi connection? Do we really want to send a high-res image to a laptop speeding along on a train, intermittantly connected to a 3G network? These wholly different questions on responsiveness and images lead me to develop <a href="https://github.com/nathanford/pngy" title="Pngy on github">Pngy</a>: a simple script that tests download speed, then loads images accordingly. (In researching this post, I found two similar projects: <a href="https://github.com/adamdbradley/foresight.js" title="Foresight on github">Foresight</a> and <a href="https://github.com/teleject/hisrc" title="HiSRC on github">HiSRC</a>. Give them a try!)</p>
+		
+		<p>How would <code>srcset</code> or <code>picture</code> respond to a bandwidth problem? Given the time and impetus, a spec might be crafted, but the net cast to capture potential solutions will have been limited, and possibly riddled with needlessly political holes. With clever <a href="http://remysharp.com/2010/10/08/what-is-a-polyfill/" title="More on this from Remy Sharp">polyfills</a>, <a href="http://code.google.com/p/html5shim/" title="The HTML5 Shim on Google Code">shims</a>, or even good old-fashioned Javascript, we have the ability to create solutions <em>right now</em> that work the way we see fit. <a href="http://jquery.com/" title="jQuery's site">jQuery</a>, <a href="http://lesscss.org/" title="LESS's site">LESS</a> and <a href="http://sass-lang.com/" title="SASS's site">SASS</a> are all examples of how syntax and behavior can be normalized and improved without being codified by the standards bodies, and how these solutions can eventually lead more informed specifications.</p>
+		
+		<p>For standardization to truly continue making the web a more stable place, we do not need more anticipatory specifications, we need solutions. Lots of them. Dumb ones, fat ones, smart ones, skinny ones. Let us embrace them all then watch them fight it out in the field. When the strongest emerge, we can adopt them into our specs and wait for the next batch of victors. Until those battle-hardened scripts, preprocessors, and hacks climb from the anarchic pits of everyday web work, though, we should simply wait.</p>
+	
+	</article>
+	
+	<script src="./js/stylefill.js" type="text/javascript"></script>
+	<script src="./js/typography.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	
+		stylefill.init({
+		
+			'rag-adjust' : typo.ragadjust
+		
+		});
+	
+	</script>
+		
+</body>
+</html>
