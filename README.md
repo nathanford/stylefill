@@ -1,7 +1,7 @@
 Stylefill.js
 ============
 
-A ‘Stylefill’ is a way to create new CSS properties using JavaScript. Similar to a [polyfill](http://remysharp.com/2010/10/08/what-is-a-polyfill/), Stylefills are only focussed on extending CSS in new ways, and Stylefill.js is a library to help make it much easier.
+A ‘Stylefill’ is a way to create new CSS properties using JavaScript. Stylefills are similar in concept to a [polyfill](http://remysharp.com/2010/10/08/what-is-a-polyfill/), but are only focussed on extending CSS in new ways, and Stylefill.js is a library to help make it much easier.
 
 *Disclaimer: This is for people who really know JavaScript. This script will not make anything magically work.*
 
