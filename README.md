@@ -100,7 +100,7 @@ p, li, h3, dd {
 }
 ```
 
-…and it will be handled just as I have defined.
+…and it will be handled just as if it was a real CSS property.
 
 ## Issues 
 
