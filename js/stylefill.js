@@ -43,7 +43,7 @@ var stylefill = {
 	
 	getStyleSheets : function () {
 	
-		if (Array.prototype.slice) { // feature detect for IE lte 9
+		if (Array.prototype.slice.call(document.documentElement)) { // feature detect for IE lte 9
 	
 			var sheetstext = new Array(),
 					sheets = Array.prototype.slice.call(document.getElementsByTagName('link')); // grab stylesheet links - not used yet
