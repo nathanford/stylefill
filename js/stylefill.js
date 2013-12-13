@@ -104,12 +104,12 @@ var stylefill = {
 	
 	checkRule : function (property) {
 		
-		console.log(document.body.style);
+		var propertyCamel = property.replace(/(^|-)([a-z])/g, function (m1, m2, m3) { return m3.toUpperCase(); });
 		
-		if ('WebkitTransform' in document.body.style 
-		 || 'MozTransform' in document.body.style 
-		 || 'OTransform' in document.body.style 
-		 || 'transform' in document.body.style) return true;
+		if (('Webkit' + propertyCamel) in document.body.style 
+		 || ('Moz' + propertyCamel) in document.body.style 
+		 || ('O' + propertyCamel) in document.body.style 
+		 || property in document.body.style) return true;
 	
 	},
 	
