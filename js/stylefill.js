@@ -115,28 +115,32 @@ var stylefill = {
 	
 	findRules : function (property, sheettext, func) {
 		
-		var rules = new Array();
+		var rules = { support: false };
 			
 		if (sheettext) {
 		
-			var selreg = new RegExp('([^}{]+){([^}]+)?' + property.replace('-', '\\-') + '[\\s\\t]*:[\\s\\t]*([^;]+)', 'gi'),
-					selmatch;
+			var selreg = new RegExp('([^}{]+){([^}]+)?' + property.replace('-', '\\-') + '[\\s\\t]*:[\\s\\t]*([^;]+)', 'gi'), 
+					selmatch,
+					i = 0;
 			
-			while (selmatch = selreg.exec(sheettext)) {
+			if (!this.checkRule(property)) { // check if rule is valid now
 			
-				if (!this.checkRule(property)) { // check if rule is valid now
-		   
-					rules.push({
+				while (selmatch = selreg.exec(sheettext)) {
+		   		
+					rules['rule' + i] = {
 						
 						selector: selmatch[1].replace(/^([\s\n\r]+|\/\*.*?\*\/)+/, '').replace(/[\s\n\r]+$/, ''),
 						property: property,
 						value: selmatch[3]
 						
-					});
+					};
+					
+					i++;
 				
 				}
 			    
 			}
+			else rules.support = true;
 			
 			func(rules);
 		
