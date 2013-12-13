@@ -10,7 +10,7 @@ This script acts as a bridge between your CSS and your JavaScript, allowing your
 ## Use cases
 
 * Create new properties for CSS and use them in your CSS files.
-* Create polyfills for older browsers without the need for all of the JS.
+* Create polyfills for older browsers that do not require much JavaScript knowledge.
 * Detect CSS property support.
 
 ## Setup
