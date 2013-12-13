@@ -7,6 +7,12 @@ A ‘Stylefill’ is a way to create new CSS properties using JavaScript. Stylef
 
 This script acts as a bridge between your CSS and your JavaScript, allowing your scripts to read your invented CSS properties and then run whatever function using the assigned selector and property value.
 
+## Use cases
+
+* Create new properties for CSS and use them in your CSS files.
+* Create polyfills for older browsers without the need for all of the JS.
+* Detect CSS property support.
+
 ## Setup
 
 Add stylefill.js to your HTML page, wherever you like. Then, you merely need to initialize stylefill, passing it the new property name and the function you want to run on that property. It’s best to add this at the end of your page, just before the closing `body` tag.
@@ -102,8 +108,10 @@ p, li, h3, dd {
 
 …and it will be handled just as if it was a real CSS property.
 
+### Future proofing
+Stylefill.js will check to see if a new property is valid before running your script. If something you’ve built eventually finds its way into the spec, the script will only work as a backup polyfill.
+
 ## Issues 
 
-__Version 1.1__
+__Version 1.2__
 * Works with rules in `style` tags and in linked stylesheets from the same domain. This will fail with rules from a stylesheet on another domain (no cross-domain, basically). Will not read inline styles either.
-* This will not yet work in IE8, but a fix will be coming soon for this.
