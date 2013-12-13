@@ -104,6 +104,6 @@ p, li, h3, dd {
 
 ## Issues 
 
-__Version 1.0__
-* So far, I have only been able to read CSS written in a `style` tag on the page. I am working on retrieving styles from external and inline CSS.
+__Version 1.1__
+* Works with rules in `style` tags and in linked stylesheets from the same domain. This will fail with rules from a stylesheet on another domain (no cross-domain, basically). Will not read inline styles either.
 * This will not yet work in IE8, but a fix will be coming soon for this.
