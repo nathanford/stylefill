@@ -10,8 +10,6 @@
 
 <!--<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>-->
 <link href='./css/styles.css' rel='stylesheet' type='text/css'>
-<link href='./css/animations.css' rel='stylesheet' type='text/css'>
-<link href='./css/print.css' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
 
@@ -27,6 +25,7 @@
 		font-size: 4vw;
 		margin: 0;
 		line-height: 1.2;
+		rag-adjust: all;
 	}
 	
 	h2 {
@@ -44,18 +43,6 @@
 		margin: 1em 0 2em;
 		font-weight: 400;
 		font-style: italic;
-	}
-	
-	p, li, h3, dd {
-		max-width: 32em;
-	}
-	
-	p {
-		margin: 0;
-	}
-	
-	p + p {
-		text-indent: 1em;
 	}
 	
 	li {
@@ -143,12 +130,7 @@
 	
 		stylefill.init({
 		
-			'rag-adjust' : typo.ragadjust,
-			'flex-wrap' : function (rules) {
-				
-				console.log(rules);
-				
-			}
+			'rag-adjust' : typo.ragAdjust
 		
 		});
 	

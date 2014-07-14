@@ -9,6 +9,14 @@ var stylefill = {
 	allRules : new Object(),
 	
 	allFills : new Object(),
+	
+	init : function (params) {
+		
+		this.allFills = params;
+		
+		this.getStyleSheet(params);
+	
+	},
 
 	objSize : function(obj) {
 	
@@ -58,14 +66,6 @@ var stylefill = {
     }
 	
 	},
-
-	init : function (params) {
-		
-		this.allFills = params;
-		
-		this.getStyleSheet(params);
-	
-	},
 	
 	loadFile : function(params, url, scount) {
 	
@@ -92,7 +92,9 @@ var stylefill = {
 				sheets = Array.prototype.slice.call(document.getElementsByTagName('link')); // grab stylesheet links - not used yet
 				
 				sheets.push(Array.prototype.slice.call(document.getElementsByTagName('style'))[0]); // add on page CSS
-				
+		
+		sheets.reverse();
+		
 		var scount = this.objSize(sheets);
 		
 		while (scount-- > 0) {
@@ -166,8 +168,6 @@ var stylefill = {
 		var allRules = stylefill.allRules,
 				allFills = stylefill.allFills;
 		
-		console.log(allRules);
-		
 		for (i in allRules) {
 			
 			var rules = allRules[i];
@@ -185,7 +185,7 @@ var stylefill = {
 							value: rule['value']
 							
 						};
-						
+				
 				func(newrule);
 			
 			}
