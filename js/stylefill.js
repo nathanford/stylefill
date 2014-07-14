@@ -1,14 +1,24 @@
+/* Stylefill.js – https://github.com/nathanford/stylefill
+
+This script acts as a bridge between your CSS and your JavaScript, allowing your scripts to read your invented CSS properties and then run whatever function using the assigned selector and property value.
+
+*/
+
 var stylefill = {
+
+	allRules : new Object(),
+	
+	allFills : new Object(),
 
 	objSize : function(obj) {
 	
-	    var size = 0, key;
-	    
-	    for (key in obj) {
-	        if (obj.hasOwnProperty(key)) size++;
-	    }
-	    
-	    return size;
+    var size = 0, key;
+    
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    
+    return size;
 	    
 	},
 	
@@ -51,19 +61,13 @@ var stylefill = {
 
 	init : function (params) {
 		
-		this.arraySliceShim();
+		this.allFills = params;
 		
-		for (property in params) {
-			
-			var func = params[property];	
-					
-			this.getStyleSheet(property, func);
-		
-		}
+		this.getStyleSheet(params);
 	
 	},
 	
-	loadFile : function(url, property, func) {
+	loadFile : function(params, url, scount) {
 	
 	    var req;
 	
@@ -74,7 +78,7 @@ var stylefill = {
 	
 	    req.onreadystatechange = function() {
 	    	
-	      if (this.readyState == 4 && this.status == 200) stylefill.findRules(property, this.responseText, func);
+	      if (this.readyState == 4 && this.status == 200) stylefill.findRules(params, this.responseText, scount);
 	      
 	    };
 	    
@@ -82,8 +86,8 @@ var stylefill = {
 	
 	},
 	
-	getStyleSheet : function (property, func) {
-	
+	getStyleSheet : function (params) {
+		
 		var sheetstext = new Array(),
 				sheets = Array.prototype.slice.call(document.getElementsByTagName('link')); // grab stylesheet links - not used yet
 				
@@ -95,8 +99,8 @@ var stylefill = {
 			
 			var sheet = sheets[scount];
 			
-			if (sheet.innerHTML) this.findRules(property, sheet, func);
-			else this.loadFile(sheet.href, property, func);
+			if (sheet.innerHTML) this.findRules(params, sheet.innerHTML, scount);
+			else if (sheet.href.match(document.domain)) this.loadFile(params, sheet.href, scount);
 					
 		}
 	
@@ -110,39 +114,95 @@ var stylefill = {
 		 || ('Moz' + propertyCamel) in document.body.style 
 		 || ('O' + propertyCamel) in document.body.style 
 		 || property in document.body.style) return true;
-	
+		
+		else return false;
+		
 	},
 	
-	findRules : function (property, sheettext, func) {
+	findRules : function (params, sheettext, scount) {
 		
-		var rules = { support: false };
-			
 		if (sheettext) {
-		
-			var selreg = new RegExp('([^}{]+){([^}]+)?' + property.replace('-', '\\-') + '[\\s\\t]*:[\\s\\t]*([^;]+)', 'gi'), 
-					selmatch,
-					i = 0;
 			
-			if (!this.checkRule(property)) { // check if rule is valid now
+			var pcount = this.objSize(params);
 			
+			for (property in params) {
+			
+				var selreg = new RegExp('([^}{]+){([^}]+)?' + property.replace('-', '\\-') + '[\\s\\t]*:[\\s\\t]*([^;]+)', 'gi'), 
+						selmatch,
+						
+						support = stylefill.checkRule(property);
+				
 				while (selmatch = selreg.exec(sheettext)) {
 		   		
-					rules['rule' + i] = {
-						
-						selector: selmatch[1].replace(/^([\s\n\r]+|\/\*.*?\*\/)+/, '').replace(/[\s\n\r]+$/, ''),
-						property: property,
-						value: selmatch[3]
-						
-					};
+		   		var sels = selmatch[1].replace(/^([\s\n\r\t]+|\/\*.*?\*\/)+/, '').replace(/[\s\n\r\t]+$/, ''),
+		   				val = selmatch[3];
 					
-					i++;
+					sels = sels.split(',');
+					
+					for (sel in sels) { 
+					
+						var s = sels[sel];
+					
+						if (!stylefill.allRules[s]) stylefill.allRules[s] = new Object();
+						stylefill.allRules[s][property] = {
+							'support': support,
+							'value': val
+						};
+					
+					}
 				
 				}
-			    
+				
 			}
-			else rules.support = true;
 			
-			func(rules);
+			if (scount == 1) this.runFills();
+			
+		}
+		
+	},
+	
+	runFills : function () {
+		
+		var allRules = stylefill.allRules,
+				allFills = stylefill.allFills;
+		
+		console.log(allRules);
+		
+		for (i in allRules) {
+			
+			var rules = allRules[i];
+			
+			for (j in rules) {
+				
+				var rule = rules[j],
+						func = allFills[j],
+						
+						newrule = {
+							
+							support : rule['support'],
+							selector: i,
+							property: j,
+							value: rule['value']
+							
+						};
+						
+				func(newrule);
+			
+			}
+		
+		}
+		
+	},
+	
+	binder : function (object, events, func) {
+		
+		var events = events.split(','),
+				eventscount = events.length;
+		
+		while (eventscount-- > 0) {
+		
+			if (object.attachEvent) object.attachEvent('on' + events[eventscount].trim(), func);
+			else object.addEventListener(events[eventscount].trim(), func, false);
 		
 		}
 		
